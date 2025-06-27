@@ -1,7 +1,18 @@
+"use client";
 import { Scene } from "@/components/hero-section";
-import { Badge } from "@/components/ui/badge";
+import React, { useRef, useEffect } from "react";
+import { useLoader } from "./LoaderProvider"; // adjust path as needed
 
 export default function Hero() {
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const { isLoading } = useLoader();
+
+	useEffect(() => {
+		if (!isLoading && videoRef.current) {
+			videoRef.current.play();
+		}
+	}, [isLoading]);
+
 	return (
 		<div className="relative min-h-svh w-screen text-white flex flex-col items-center justify-center p-8 pt-40 overflow-hidden pb-12">
 			{/* Background gradient overlay */}
@@ -38,13 +49,16 @@ export default function Hero() {
 					<div className="relative">
 						{/* Video container with enhanced styling */}
 						<div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 rounded-xl blur-xl"></div>
+
 						<video
+							ref={videoRef}
 							className="relative rounded-xl w-full aspect-video bg-[#13131f] flex items-center justify-center transition-all duration-300 max-w-4xl shadow-2xl border border-border/30"
-							controls>
-							<source
-								src="https://videos.pexels.com/video-files/18453668/18453668-uhd_2560_1440_30fps.mp4"
-								type="video/mp4"
-							/>
+							autoPlay
+							loop
+							playsInline
+							controls
+							muted>
+							<source src="Showreel.mp4" type="video/mp4" />
 							Sorry, your browser does not support embedded videos.
 						</video>
 					</div>

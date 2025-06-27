@@ -16,7 +16,6 @@ export default function Page() {
 			<section id="thumbnails">
 				<Thumbnails />
 			</section>
-
 			<section id="contact">
 				<Contact />
 			</section>
