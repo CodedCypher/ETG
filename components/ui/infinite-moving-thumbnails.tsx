@@ -13,8 +13,6 @@ export const InfiniteMovingThumbnails = ({
 	thumbnails: {
 		id: string;
 		image: string;
-		title: string;
-		category: string;
 	}[];
 	direction?: "left" | "right";
 	baseSpeed?: number;
@@ -83,16 +81,16 @@ export const InfiniteMovingThumbnails = ({
 						<div className="relative group">
 							<img
 								src={thumbnail.image}
-								alt={thumbnail.title}
+								alt={thumbnail.id}
 								className="w-full h-[180px] object-cover rounded-2xl"
 								draggable={false}
 							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+							{/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
 								<div className="absolute bottom-4 left-4 right-4 text-white">
 									<h3 className="font-semibold text-sm mb-1">{thumbnail.title}</h3>
 									<p className="text-xs text-gray-300">{thumbnail.category}</p>
 								</div>
-							</div>
+							</div> */}
 						</div>
 					</li>
 				))}

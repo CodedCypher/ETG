@@ -1,7 +1,8 @@
 "use client";
 import React, { useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { TextureLoader, Shape, ExtrudeGeometry } from "three";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Shape, ExtrudeGeometry } from "three";
+import { useLoader as useAppLoader } from "@/components/LoaderProvider";
 
 const Box = ({ position, rotation }) => {
 	const shape = new Shape();
@@ -85,10 +86,16 @@ const AnimatedBoxes = () => {
 
 export const Scene = () => {
 	const [cameraPosition, setCameraPosition] = React.useState([5, 5, 20]);
+	const { finishLoading } = useAppLoader();
 
 	return (
 		<div className="w-full h-[100vh] z-0 ">
-			<Canvas camera={{ position: cameraPosition, fov: 40 }}>
+			<Canvas
+				camera={{ position: cameraPosition, fov: 40 }}
+				onCreated={() => {
+					// Wait a tick to ensure all is rendered
+					setTimeout(() => finishLoading(), 300);
+				}}>
 				<ambientLight intensity={15} />
 				<directionalLight position={[10, 10, 5]} intensity={15} />
 				<AnimatedBoxes />

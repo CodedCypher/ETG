@@ -9,39 +9,27 @@ gsap.registerPlugin(ScrollTrigger);
 const thumbnails = [
 	{
 		id: "1",
-		image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=250&fit=crop",
-		title: "Luxury Brand Campaign",
-		category: "Fashion & Lifestyle",
+		image: "thumbnail1.png",
 	},
 	{
 		id: "2",
-		image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop",
-		title: "Tech Product Launch",
-		category: "Technology",
+		image: "thumbnail2.png",
 	},
 	{
 		id: "3",
-		image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop",
-		title: "Automotive Excellence",
-		category: "Automotive",
+		image: "thumbnail3.png",
 	},
 	{
 		id: "4",
-		image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop",
-		title: "Resort Experience",
-		category: "Travel & Tourism",
+		image: "thumbnail4.png",
 	},
 	{
 		id: "5",
-		image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-		title: "Fitness Motivation",
-		category: "Health & Fitness",
+		image: "thumbnail5.png",
 	},
 	{
 		id: "6",
-		image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop",
-		title: "Food & Dining",
-		category: "Culinary",
+		image: "thumbnail6.png",
 	},
 ];
 

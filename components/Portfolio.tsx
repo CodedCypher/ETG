@@ -1,32 +1,31 @@
 "use client";
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const projects = [
 	{
 		title: "Luxury Brand Launch",
 		description: "Bringing a luxury brand to life with cinematic storytelling and premium editing.",
-		video: "https://videos.pexels.com/video-files/32195541/13730559_2560_1440_24fps.mp4",
+		video: "https://drive.google.com/file/d/1V7mXQWnWDfFBDii0epD6EzsrI5spiYhU/preview",
 		badge: "Awarded",
 	},
 	{
 		title: "Fashion Editorial Reel",
 		description: "A high-energy edit for Vogue Italia's digital campaign.",
-		video: "https://videos.pexels.com/video-files/18453668/18453668-uhd_2560_1440_30fps.mp4",
+		video: "https://drive.google.com/file/d/1QcEYcioWSanXQWn-r7oTczz-amDtvc2J/preview",
 		badge: "New",
 	},
 	{
 		title: "Automotive Masterpiece",
 		description: "Dynamic visuals and sound design for Luxe Motors.",
-		video: "https://videos.pexels.com/video-files/19453544/19453544-uhd_2560_1440_30fps.mp4",
+		video: "https://drive.google.com/file/d/1wIY0JfuC9h5M6-EeC32-rGvTH1hGPd6Q/preview",
 		badge: null,
 	},
 	{
 		title: "Resort Experience",
 		description: "Capturing the essence of Opal Resorts with immersive video.",
-		video: "https://videos.pexels.com/video-files/29340038/12646282_2560_1440_30fps.mp4",
+		video: "https://drive.google.com/file/d/1f5mbsZvv5HDLVcRdlhjTHkOlIktgq7tg/preview",
 		badge: "Brand Icon",
 	},
 ];
@@ -59,38 +58,22 @@ export default function Portfolio() {
 						</p>
 					</div>
 				</div>
-				<div className="columns-1 md:columns-2 gap-8 space-y-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{projects.map((project) => (
 						<Card
 							key={project.title}
 							className="mb-8 break-inside-avoid rounded-2xl shadow-2xl bg-card/90 border-none transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_8px_40px_0_rgba(30,157,241,0.10)] overflow-hidden">
 							<CardHeader className="p-0">
 								<AspectRatio ratio={16 / 9} className="w-full">
-									<video
+									<iframe
 										src={project.video}
-										className="w-full h-full object-cover rounded-t-2xl"
-										// autoPlay
-										loop
-										muted
-										playsInline
+										className="w-full h-full rounded-t-2xl aspect-video"
+										allow="autoplay"
+										allowFullScreen
+										style={{ border: 0 }}
 									/>
 								</AspectRatio>
 							</CardHeader>
-							{/* <CardContent className="pt-4 pb-6 px-6 flex flex-col gap-2">
-								<div className="flex items-center gap-2 mb-1">
-									<CardTitle className="text-xl md:text-2xl font-bold text-white">
-										{project.title}
-									</CardTitle>
-									{project.badge && (
-										<Badge className="ml-2 px-3 py-1 text-xs font-semibold bg-primary/80 text-white rounded-full">
-											{project.badge}
-										</Badge>
-									)}
-								</div>
-								<CardDescription className="text-sm text-muted-foreground">
-									{project.description}
-								</CardDescription>
-							</CardContent> */}
 						</Card>
 					))}
 				</div>

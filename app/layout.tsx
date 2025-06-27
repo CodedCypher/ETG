@@ -1,6 +1,9 @@
 // app/layout.tsx
+
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"; // Adjust path as needed
+import React from "react";
+import { LoaderProvider } from "@/components/LoaderProvider";
 
 export const metadata = {
 	title: "EGT Media",
@@ -42,9 +45,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				/>
 			</head>
 			<body>
-				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-					{children}
-				</ThemeProvider>
+				<LoaderProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="dark"
+						enableSystem
+						disableTransitionOnChange>
+						{children}
+					</ThemeProvider>
+				</LoaderProvider>
 			</body>
 		</html>
 	);
