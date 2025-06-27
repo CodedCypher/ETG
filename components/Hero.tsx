@@ -1,11 +1,17 @@
 "use client";
 import { Scene } from "@/components/hero-section";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useLoader } from "./LoaderProvider"; // adjust path as needed
 
 export default function Hero() {
 	const videoRef = useRef<HTMLVideoElement>(null);
-	const { isLoading } = useLoader();
+	const { isLoading, finishLoading } = useLoader();
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		setIsMobile(window.innerWidth < 768);
+		finishLoading();
+	}, []);
 
 	useEffect(() => {
 		if (!isLoading && videoRef.current) {
@@ -36,12 +42,12 @@ export default function Hero() {
 					</div>
 
 					<div className="space-y-8 flex items-center justify-center flex-col pb-10">
-						<h1 className="text-4xl md:text-5xl font-bold tracking-wide max-w-5xl font-notable leading-tight">
+						<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide max-w-5xl font-notable leading-tight">
 							Elevate Your Brand with <span className="text-primary">Personalised</span> Quality
 							Editing
 						</h1>
 
-						<p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
+						<p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
 							Crafting your videos with the intention of helping you{" "}
 							<span className="text-primary font-semibold">grow your business</span>.
 						</p>
@@ -64,10 +70,11 @@ export default function Hero() {
 					</div>
 				</div>
 			</div>
-
-			<div className="absolute inset-0">
-				<Scene />
-			</div>
+			{!isMobile && (
+				<div className="absolute inset-0 hidden md:block">
+					<Scene />
+				</div>
+			)}
 		</div>
 	);
 }
